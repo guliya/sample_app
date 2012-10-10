@@ -1,12 +1,15 @@
 SampleApp::Application.routes.draw do
-  get "pages/home"
 
-  get "pages/contact"
+  # В URL будем писать site.ru/contact вместо site.ru/pages/contact
+  #match ’/about’ также автоматически создает именованные маршруты для использования в контроллерах и представлениях
+  #about_path => /about
+  #about_url  => site.ru/about
 
-  get "pages/about"
+  match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/help',    :to => 'pages#help'
 
-  get "pages/help"
-
+  root :to => 'pages#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
